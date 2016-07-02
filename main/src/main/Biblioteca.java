@@ -7,6 +7,19 @@ public class Biblioteca {
         estoque = new Item[maxitens];
     }
     
+    Item getItem(int ID) {
+        estoque[ID].disp = false;
+        return estoque[ID];
+    }
+    
+    void DevolveItem(int ID){
+        estoque[ID].disp = true;
+    }
+    
+    void InfoItem(int ID){
+        estoque[ID].getDados(false);
+    }
+    
     private int EncontraEspaco(){
         int ret = -1;
         int i = 0;
@@ -42,5 +55,17 @@ public class Biblioteca {
                     break;
             }
         }
+    }
+    
+    void Listar(){
+        System.out.println(" ESTOQUE DA BIBLIOTECA ");
+        System.out.println("=====");
+        for(int i=0; i<estoque.length; i++){
+            if(estoque[i]!=null){
+                estoque[i].getDados(false);
+            }
+        }
+        System.out.println("=====");
+        System.out.println(" ");
     }
 }

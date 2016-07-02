@@ -10,9 +10,14 @@ public class DVD extends Item{
         this.disp = true;
     }
     
-    public void getDados(){
-        System.out.println(this.ID);
-        System.out.println(this.nome);
-        System.out.println(this.diretor);
+    @Override
+    public void getDados(boolean user){
+        System.out.println("ID: " + this.ID);
+        System.out.println("DVD: " + this.nome);
+        System.out.println("Diretor: " + this.diretor);
+        if (!this.disp && !user){
+            System.out.println("ITEM INDISPONÍVEL");
+        }
+        System.out.println("---");
     }
 }

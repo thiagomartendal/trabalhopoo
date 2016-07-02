@@ -10,9 +10,14 @@ public class Revista extends Item{
         this.disp = true;
     }
     
-    public void getDados(){
-        System.out.println(this.ID);
-        System.out.println(this.nome);
-        System.out.println(this.editora);
+    @Override
+    public void getDados(boolean user){
+        System.out.println("ID: " + this.ID);
+        System.out.println("Revista: " + this.nome);
+        System.out.println("Editora: " + this.editora);
+        if (!this.disp && !user){
+            System.out.println("ITEM INDISPONÍVEL");
+        }
+        System.out.println("---");
     }
 }
