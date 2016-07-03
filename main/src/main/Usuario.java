@@ -1,5 +1,9 @@
 package main;
 
+import java.util.Arrays;
+
+import org.apache.commons.lang3.ArrayUtils;
+
 public class Usuario{
     Item[] locados;
     
@@ -26,6 +30,7 @@ public class Usuario{
         }
         if (!possuiitens){
             System.out.println("Este usuário não está com nenhum item locado");
+            System.out.println(" ");
         }
         else {
             System.out.println(" ITENS LOCADOS PELO USUÁRIO");
@@ -56,10 +61,10 @@ public class Usuario{
         }
     }
     
-    public void DevolverItem(int ID, Biblioteca alvo){
+   public void DevolverItem(int ID, Biblioteca alvo){
         int i = 0;
-        boolean itemlocado = false;
-        boolean procura = true;
+        boolean itemlocado = false; //o usuário possui o item em seu array de locados?
+        boolean procura = true; //
         while (i<locados.length && procura){
             if (locados[i].ID==ID){
                 itemlocado = true;
@@ -71,8 +76,10 @@ public class Usuario{
             System.out.println("ERRO: Usuário não está com o item locado");
         }
         else{
-            alvo.DevolveItem(locados[i].ID);
-            locados[i]=null;
+            alvo.DevolveItem(ID);
+            locados = ArrayUtils.remove(locados, ID);
+            System.out.println("Devolução concluída");
+            System.out.println(" ");
         }
     }
 }
